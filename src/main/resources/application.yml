@@ -1,12 +1,12 @@
 server:
-  port: 8080
+  port: ${PORT:8080}
 
 spring:
   application:
     name: checklist-backend
   docker:
     compose:
-      enabled: true
+      enabled: ${SPRING_DOCKER_COMPOSE_ENABLED:true}
       file: docker-compose.yml
       lifecycle-management: start-only
   datasource:
