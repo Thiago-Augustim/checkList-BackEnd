@@ -22,7 +22,7 @@ public class ChecklistTemplate {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "tipo_veiculo", nullable = false, length = 40)
-    private TipoVeiculo tipoVeiculo = TipoVeiculo.CAVALO;
+    private TipoVeiculo tipoVeiculo = TipoVeiculo.CAVALO_MECANICO;
 
     @Column(nullable = false)
     private boolean ativo = true;

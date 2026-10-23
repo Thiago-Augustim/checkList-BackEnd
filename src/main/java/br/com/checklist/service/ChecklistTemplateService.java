@@ -56,7 +56,7 @@ public class ChecklistTemplateService {
         template.setId(UUID.randomUUID());
         template.setTitulo(request.titulo().trim());
         template.setDescricao(request.descricao() != null ? request.descricao().trim() : null);
-        template.setTipoVeiculo(request.tipoVeiculo() != null ? request.tipoVeiculo() : TipoVeiculo.CAVALO);
+        template.setTipoVeiculo(request.tipoVeiculo() != null ? request.tipoVeiculo() : TipoVeiculo.CAVALO_MECANICO);
         template.setAtivo(true);
 
         List<TemplatePergunta> perguntas = new ArrayList<>();

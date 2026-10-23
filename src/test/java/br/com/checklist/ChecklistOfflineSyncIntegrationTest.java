@@ -183,7 +183,7 @@ class ChecklistOfflineSyncIntegrationTest {
                 new SaveTemplateRequest(
                         "Vistoria de Retorno Atualizada",
                         "Descrição atualizada",
-                        TipoVeiculo.CAVALO,
+                        TipoVeiculo.CAVALO_MECANICO,
                         List.of(
                                 new SavePerguntaRequest(
                                         perguntaRetornoId,

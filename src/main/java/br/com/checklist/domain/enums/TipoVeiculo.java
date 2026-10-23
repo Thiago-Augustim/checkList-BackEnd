@@ -1,10 +1,15 @@
 package br.com.checklist.domain.enums;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
+
 public enum TipoVeiculo {
     CARRO,
-    UTILITARIO,
+    @JsonAlias("UTILITARIO")
+    CAMINHONETE,
     TOCO,
     TRUCK,
-    CAVALO,
-    CARRETA
+    @JsonAlias({"CAVALO-MECANICO", "CAVALO"})
+    CAVALO_MECANICO,
+    @JsonAlias("CARRETA")
+    REBOQUE
 }
