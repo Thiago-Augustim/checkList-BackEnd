@@ -3,12 +3,17 @@
 -- Dados iniciais de Frota e Modelos de Checklist para homologação e testes
 -- ============================================================================
 
+ALTER TABLE veiculos DROP CONSTRAINT IF EXISTS chk_veiculos_tipo;
+ALTER TABLE checklist_templates DROP CONSTRAINT IF EXISTS chk_templates_tipo_veiculo;
+ALTER TABLE checklist_templates ADD COLUMN IF NOT EXISTS tipo_veiculo VARCHAR(40) DEFAULT 'CAVALO_MECANICO';
+ALTER TABLE checklist_templates ALTER COLUMN tipo_veiculo SET DEFAULT 'CAVALO_MECANICO';
+
 INSERT INTO veiculos (id, placa, modelo, tipo, km_atual, ativo, criado_em)
-SELECT '550e8400-e29b-41d4-a716-446655440001', 'ABC1D23', 'Scania R450 6x2', 'CAVALO', 145200, TRUE, CURRENT_TIMESTAMP
+SELECT '550e8400-e29b-41d4-a716-446655440001', 'ABC1D23', 'Scania R450 6x2', 'CAVALO_MECANICO', 145200, TRUE, CURRENT_TIMESTAMP
 WHERE NOT EXISTS (SELECT 1 FROM veiculos WHERE id = '550e8400-e29b-41d4-a716-446655440001' OR placa = 'ABC1D23');
 
 INSERT INTO veiculos (id, placa, modelo, tipo, km_atual, ativo, criado_em)
-SELECT '550e8400-e29b-41d4-a716-446655440002', 'XYZ9F87', 'Volvo FH 540 6x4', 'CAVALO', 89300, TRUE, CURRENT_TIMESTAMP
+SELECT '550e8400-e29b-41d4-a716-446655440002', 'XYZ9F87', 'Volvo FH 540 6x4', 'CAVALO_MECANICO', 89300, TRUE, CURRENT_TIMESTAMP
 WHERE NOT EXISTS (SELECT 1 FROM veiculos WHERE id = '550e8400-e29b-41d4-a716-446655440002' OR placa = 'XYZ9F87');
 
 INSERT INTO veiculos (id, placa, modelo, tipo, km_atual, ativo, criado_em)

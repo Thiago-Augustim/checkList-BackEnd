@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS veiculos (
     id UUID PRIMARY KEY,
     placa VARCHAR(10) NOT NULL UNIQUE,
     modelo VARCHAR(120) NOT NULL,
-    tipo VARCHAR(40) NOT NULL CHECK (tipo IN ('CAVALO', 'CARRETA', 'TRUCK', 'TOCO', 'UTILITARIO')),
+    tipo VARCHAR(40) NOT NULL CHECK (tipo IN ('CARRO', 'CAMINHONETE', 'TOCO', 'TRUCK', 'CAVALO_MECANICO', 'REBOQUE', 'CAVALO', 'CARRETA', 'UTILITARIO')),
     km_atual INTEGER NOT NULL DEFAULT 0 CHECK (km_atual >= 0),
     ativo BOOLEAN NOT NULL DEFAULT TRUE,
     criado_em TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -103,3 +103,8 @@ CREATE TABLE IF NOT EXISTS resposta_fotos (
 
 CREATE INDEX IF NOT EXISTS idx_fotos_resposta ON resposta_fotos(resposta_id);
 CREATE INDEX IF NOT EXISTS idx_fotos_status ON resposta_fotos(status_upload);
+
+ALTER TABLE veiculos DROP CONSTRAINT IF EXISTS chk_veiculos_tipo;
+ALTER TABLE checklist_templates DROP CONSTRAINT IF EXISTS chk_templates_tipo_veiculo;
+ALTER TABLE checklist_templates ADD COLUMN IF NOT EXISTS tipo_veiculo VARCHAR(40) DEFAULT 'CAVALO_MECANICO';
+ALTER TABLE checklist_templates ALTER COLUMN tipo_veiculo SET DEFAULT 'CAVALO_MECANICO';

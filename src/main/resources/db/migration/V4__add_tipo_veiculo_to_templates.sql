@@ -15,7 +15,7 @@ ALTER TABLE veiculos ADD CONSTRAINT chk_veiculos_tipo
 
 -- 2. Adiciona a coluna tipo_veiculo em checklist_templates
 ALTER TABLE checklist_templates ADD COLUMN IF NOT EXISTS tipo_veiculo VARCHAR(40);
-UPDATE checklist_templates SET tipo_veiculo = 'CAVALO' WHERE tipo_veiculo IS NULL;
+UPDATE checklist_templates SET tipo_veiculo = 'CAVALO_MECANICO' WHERE tipo_veiculo IS NULL;
 ALTER TABLE checklist_templates ALTER COLUMN tipo_veiculo SET NOT NULL;
 ALTER TABLE checklist_templates DROP CONSTRAINT IF EXISTS chk_templates_tipo_veiculo;
 ALTER TABLE checklist_templates ADD CONSTRAINT chk_templates_tipo_veiculo
