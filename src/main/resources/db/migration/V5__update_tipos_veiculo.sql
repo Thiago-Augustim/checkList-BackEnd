@@ -5,8 +5,8 @@
 -- ============================================================================
 
 -- 1. Remove as constraints antigas criadas na V4
-ALTER TABLE veiculos DROP CONSTRAINT chk_veiculos_tipo;
-ALTER TABLE checklist_templates DROP CONSTRAINT chk_templates_tipo_veiculo;
+ALTER TABLE veiculos DROP CONSTRAINT IF EXISTS chk_veiculos_tipo;
+ALTER TABLE checklist_templates DROP CONSTRAINT IF EXISTS chk_templates_tipo_veiculo;
 
 -- 2. Converte os registros existentes na tabela veiculos para a nova nomenclatura
 UPDATE veiculos SET tipo = 'CAVALO_MECANICO' WHERE tipo IN ('CAVALO', 'CAVALO-MECANICO');
